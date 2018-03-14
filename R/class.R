@@ -39,18 +39,13 @@ setMethod("dbConnect", "H2Driver", def=function(drv, url = "jdbc:h2:mem:",
   new("H2Connection", jc=jc, identifier.quote=drv@identifier.quote)},
   valueClass="H2Connection")
 
-setMethod("dbWriteTable", "H2Connection", def=function(conn, name, value, overwrite=TRUE, ...) {
+setMethod("dbWriteTable", signature(conn="H2Connection",name="character",value="data.frame"), def=function(conn, name, value, overwrite=TRUE, ...) {
   dots <- list(...)
   temporary <- "temporary" %in% names(dots) && dots$temporary
   ac <- .jcall(conn@jc, "Z", "getAutoCommit")
-  if (is.vector(value) && !is.list(value)) value <- data.frame(x=value)
   if (length(value)<1) stop("value must have at least one column")
   if (is.null(names(value))) names(value) <- paste("V",1:length(value),sep='')
-  if (length(value[[1]])>0) {
-    if (!is.data.frame(value)) value <- as.data.frame(value, row.names=1:length(value[[1]]))
-  } else {
-    if (!is.data.frame(value)) value <- as.data.frame(value)
-  }
+
   fts <- sapply(value, dbDataType, dbObj=conn)
   if (dbExistsTable(conn, name)) {
     if (overwrite) dbRemoveTable(conn, name)
@@ -86,6 +81,16 @@ setMethod("dbWriteTable", "H2Connection", def=function(conn, name, value, overwr
     }
   }
   if (ac) dbCommit(conn)            
+})
+
+setMethod("dbWriteTable", signature(conn="H2Connection",name="character",value="ANY"), def=function(conn, name, value, ...) {
+  if (is.vector(value) && !is.list(value)) value <- data.frame(x=value)
+  if (length(value[[1]])>0) {
+    if (!is.data.frame(value)) value <- as.data.frame(value, row.names=1:length(value[[1]]))
+  } else {
+    if (!is.data.frame(value)) value <- as.data.frame(value)
+  }
+  dbWriteTable(conn=conn,name=name,value=value)
 })
 
 setMethod("dbDataType", signature(dbObj="H2Connection", obj = "ANY"),

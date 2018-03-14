@@ -1,8 +1,8 @@
-ed8aa9ae2b3e6974787c7166d74d9102 *DESCRIPTION
-9a2433c3a84b0db2c7daa7c0d2ddcb29 *NAMESPACE
-e975f357915ab47782b272ec9ec32672 *NEWS
-616c608348148b385b1db54cea5e7988 *R/class.R
-6229fd96c560d8004ea4ec822a99e98a *README.md
+e472653b04cf18a50790ea7bd2b37ac2 *DESCRIPTION
+42c05127c98a8c1187eb1c5f7a45a4ea *NAMESPACE
+c6dd8c38b981def1581bd8c4bf517f1a *NEWS
+faaf860ea83734531366348231cae8b6 *R/class.R
+7cf95207e8af1dcee48b325076abcb6b *README.md
 ffa062eff873136b6d59603db1c333c0 *inst/INSTALL
 3fb6ecca335bf94bcb2153be7b939d03 *inst/NOTE
 6acf21208150be876dc480f58766f57f *inst/THANKS
@@ -10,8 +10,9 @@ ffa062eff873136b6d59603db1c333c0 *inst/INSTALL
 1a925b2e3c104d4e8e786e6d5159fceb *java/README
 a7d86ad9236abcd4e556c8a00cdc08ea *man/H2.Rd
 d96d8b78473c04f049371d3a6ea770c3 *man/H2Connection-class.Rd
-b6d7f6809c447963626cced5d1b2af91 *man/H2Connection-methods.Rd
+d8a0a1e7c9ce91f96731ecdcbbb87cfa *man/H2Connection-methods.Rd
 236365ce18b6ae9a0d5c5f4d1364fb68 *man/H2Driver-class.Rd
 64929fe1397246fdc0f88f9ef6ddc00e *man/H2Driver-methods.Rd
 b8f294e454340472e8aab0ee72c79291 *man/H2Result-class.Rd
-83fead13f9ff7c9aec6486dcd673e333 *man/H2Result-methods.Rd
+5880e0452373ebc8d5a551ad52284c68 *man/H2Result-methods.Rd
+5d8e1d99b44651c74aa1b1974a34bc1e *tests/RH2_basic_in_mem_tests.R
